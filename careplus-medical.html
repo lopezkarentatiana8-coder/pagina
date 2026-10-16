@@ -6,10 +6,8 @@
 <title>CarePlus Medical</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#e3f4f7;--bg2:#d3ecf1;--card:rgba(255,255,255,.72);--ink:#0b1f26;--muted:#4b6670;--accent:#4aa8b5;--accent-ink:#fff;--line:rgba(255,255,255,.9);--shadow:0 8px 24px rgba(40,110,125,.14);--hero:linear-gradient(120deg,#f4fbfc 0%,#cfe9ee 60%,#a9d5de 100%);--icon:#6bb7c3;
+:root{--bg:#e3f4f7;--bg2:#d3ecf1;--card:rgba(255,255,255,.72);--ink:#0b1f26;--muted:#4b6670;--accent:#4aa8b5;--accent-ink:#fff;--line:rgba(255,255,255,.9);--shadow:0 8px 24px rgba(40,110,125,.14);--hero:linear-gradient(120deg,#f4fbfc 0%,#cfe9ee 60%,#a9d5de 100%);--icon:#6bb7c3;color-scheme:light;--pink:#f06fa4;--pink-soft:#ffe3ee;--pink-ink:#7a1f48;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e2227;--bg2:#12303a;--card:rgba(255,255,255,.07);--ink:#e8f6f8;--muted:#9bbcc4;--accent:#56b6c3;--accent-ink:#06191d;--line:rgba(255,255,255,.12);--shadow:0 8px 24px rgba(0,0,0,.35);--hero:linear-gradient(120deg,#12303a 0%,#17424e 60%,#1d5563 100%);--icon:#7cc8d3}}
-:root[data-theme="dark"]{--bg:#0e2227;--bg2:#12303a;--card:rgba(255,255,255,.07);--ink:#e8f6f8;--muted:#9bbcc4;--accent:#56b6c3;--accent-ink:#06191d;--line:rgba(255,255,255,.12);--shadow:0 8px 24px rgba(0,0,0,.35);--hero:linear-gradient(120deg,#12303a 0%,#17424e 60%,#1d5563 100%);--icon:#7cc8d3}
 html{scroll-padding-top:90px;scroll-behavior:smooth}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
@@ -28,7 +26,7 @@ header{position:sticky;top:0;z-index:20;padding:12px 0}
 .hero{margin-top:8px;border-radius:32px;background:var(--hero);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;position:relative;padding:64px 40px 40px}
 .hero h1{font-size:clamp(38px,6vw,64px);line-height:1.05;margin:0 0 14px;font-weight:800;max-width:11ch;letter-spacing:-.02em}
 .hero p.sub{font-size:18px;max-width:30ch;color:var(--muted);margin:0 0 40px}
-.pulse{position:absolute;right:-20px;top:30px;width:min(52%,460px);opacity:.9;pointer-events:none}
+.brain{position:absolute;right:40px;top:28px;width:min(34%,300px);aspect-ratio:1;border-radius:28px;overflow:hidden;border:2px dashed var(--accent);display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;color:var(--muted);padding:12px}.brain img{width:100%;height:100%;object-fit:cover;margin:-12px}
 .book{position:relative;display:grid;grid-template-columns:repeat(3,1fr) auto;gap:14px;align-items:end;padding:18px 20px;border-radius:20px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(10px)}
 .book label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
 .book select,.book input{width:100%;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:0 12px;font:500 14px Inter,sans-serif}
@@ -45,15 +43,29 @@ h2{text-align:center;font-size:26px;margin:0 0 32px;font-weight:700}
 .dept svg{display:block;margin:0 auto 14px}
 .svc{padding:12px 12px 20px}
 .svc .pic{height:170px;border-radius:16px;background:linear-gradient(135deg,#dff1f4,#b6dbe3);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .svc .pic{background:linear-gradient(135deg,#1b4652,#245b6a)}}
 .svc h3{margin:0 8px 6px;font-size:18px}
 .svc p{margin:0 8px;color:var(--muted);font-size:14px}
-footer{padding:36px 0 28px;text-align:center;color:var(--muted);font-size:14px}
+footer{padding:40px 0 32px}
+.creator{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.photo{width:120px;height:120px;border-radius:50%;overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center;background:var(--card);border:2px dashed var(--accent);box-shadow:var(--shadow);color:var(--muted);font-size:13px}
+.photo img{width:100%;height:100%;object-fit:cover}
+.who{margin:0;color:var(--muted);font-size:14px}.who strong{color:var(--ink);font-size:18px}
+.cal{max-width:440px;margin:0 auto;padding:22px;border-radius:28px;background:linear-gradient(160deg,#fff0f6,var(--pink-soft));border:1px solid #ffc8de;box-shadow:0 8px 24px rgba(240,111,164,.22);color:var(--pink-ink)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-weight:700;text-transform:capitalize}
+.cal-head button{border:0;background:#fff;color:var(--pink);width:34px;height:34px;border-radius:50%;cursor:pointer;font:700 18px Inter,sans-serif}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.cal-grid span{font-size:12px;font-weight:600;opacity:.7;padding:4px 0}
+.cal-grid button{aspect-ratio:1;border:0;border-radius:50%;background:transparent;color:inherit;font:500 14px Inter,sans-serif;cursor:pointer}
+.cal-grid button:hover:not(:disabled){background:#fff}
+.cal-grid button:disabled{opacity:.35;cursor:default}
+.cal-grid button.today{outline:2px solid var(--pink)}
+.cal-grid button.sel{background:var(--pink);color:#fff}
+.cal-note{text-align:center;margin:14px 0 0;font-size:13px}
 @media (max-width:820px){
 .links,.nav>.btn{display:none}.burger{display:block}
 .nav.open{flex-wrap:wrap;border-radius:24px}.nav.open .links{display:flex;flex-direction:column;width:100%;gap:8px;order:3;margin:0}
 .nav.open>.btn{display:inline-block;order:4;width:100%;text-align:center}
-.hero{padding:40px 20px 24px}.pulse{opacity:.35;width:80%}
+.hero{padding:40px 20px 24px}.brain{position:static;width:100%;max-width:240px;margin:0 0 20px}
 .book{grid-template-columns:1fr}.g3{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dept{transition:none}}
 </style>
@@ -75,6 +87,7 @@ const IcScan = () => svg(96, [h('rect',{key:1,x:6,y:14,width:52,height:36,rx:8})
 const IcSurg = () => svg(96, [h('path',{key:1,d:'M14 12h36l-6 14H20z'}),h('path',{key:2,d:'M32 26v14'}),h('rect',{key:3,x:8,y:44,width:48,height:8,rx:3})]);
 const IcLab = () => svg(96, [h('path',{key:1,d:'M24 8h16M28 8v18L12 52a4 4 0 0 0 4 6h32a4 4 0 0 0 4-6L36 26V8'}),h('path',{key:2,d:'M20 42h24'})]);
 
+const BRAIN_SRC = '';
 const DEPTS = [
   {id:'urgencias', name:'Urgencias', icon:IcAmbulance, docs:['Dr. Martín Sosa','Dra. Laura Pérez']},
   {id:'pediatria', name:'Pediatría', icon:IcBear, docs:['Dra. Ana Gómez','Dr. Julián Ríos']},
@@ -98,10 +111,9 @@ function Nav() {
     )));
 }
 
-function Booking() {
+function Booking({date, setDate}) {
   const [dep, setDep] = useState('');
   const [doc, setDoc] = useState('');
-  const [date, setDate] = useState('');
   const [msg, setMsg] = useState('');
   const docs = (DEPTS.find(d => d.id === dep) || {docs:[]}).docs;
   const submit = () => {
@@ -124,13 +136,12 @@ function Booking() {
     msg && h('p', {className:'ok', role:'status'}, msg));
 }
 
-function Hero() {
+function Hero({date, setDate}) {
   return h('div', {className:'wrap', id:'inicio'}, h('div', {className:'hero'},
-    h('svg', {className:'pulse', viewBox:'0 0 400 200', fill:'none', stroke:'var(--accent)', strokeWidth:5, strokeLinecap:'round', strokeLinejoin:'round', 'aria-hidden':true},
-      h('path', {d:'M0 110h110l25-60 40 120 35-90 25 30h165'})),
+    h('div', {className:'brain'}, BRAIN_SRC ? h('img', {src:BRAIN_SRC, alt:'Cerebro'}) : 'Acá va la imagen del cerebro'),
     h('h1', null, 'Tu salud, nuestra prioridad'),
     h('p', {className:'sub'}, 'Atención cálida para vos y tu familia'),
-    h(Booking)));
+    h(Booking, {date, setDate})));
 }
 
 function Departments() {
@@ -146,14 +157,51 @@ function Services() {
       h('div', {className:'pic'}, h(s.icon)), h('h3', null, s.name), h('p', null, s.text))))));
 }
 
+const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+function Calendar({date, setDate}) {
+  const now = new Date();
+  const [ym, setYm] = useState({y:now.getFullYear(), m:now.getMonth()});
+  const pad = n => String(n).padStart(2,'0');
+  const iso = d => ym.y + '-' + pad(ym.m+1) + '-' + pad(d);
+  const todayIso = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate());
+  const offset = (new Date(ym.y, ym.m, 1).getDay() + 6) % 7;
+  const total = new Date(ym.y, ym.m + 1, 0).getDate();
+  const cells = [];
+  for (let i = 0; i < offset; i++) cells.push(null);
+  for (let d = 1; d <= total; d++) cells.push(d);
+  const move = n => setYm(p => { const x = new Date(p.y, p.m + n, 1); return {y:x.getFullYear(), m:x.getMonth()}; });
+  return h('section', {className:'s', id:'calendario'}, h('div', {className:'wrap'},
+    h('h2', null, 'Calendario de turnos'),
+    h('div', {className:'cal'},
+      h('div', {className:'cal-head'},
+        h('button', {'aria-label':'Mes anterior', onClick:()=>move(-1)}, '‹'),
+        h('span', {'aria-live':'polite'}, MESES[ym.m] + ' ' + ym.y),
+        h('button', {'aria-label':'Mes siguiente', onClick:()=>move(1)}, '›')),
+      h('div', {className:'cal-grid'},
+        ['L','M','M','J','V','S','D'].map((l,i) => h('span', {key:'w'+i}, l)),
+        cells.map((d,i) => d === null ? h('i', {key:'e'+i}) :
+          h('button', {key:d, disabled:iso(d) < todayIso, className:(iso(d)===todayIso?'today ':'')+(iso(d)===date?'sel':''), 'aria-pressed':iso(d)===date, onClick:()=>setDate(iso(d))}, d))),
+      h('p', {className:'cal-note'}, date ? 'Fecha elegida: ' + date.split('-').reverse().join('/') : 'Elegí un día para tu turno.'))));
+}
+
 function Footer() {
-  return h('footer', {id:'contacto'}, h('div', {className:'wrap'},
-    h('p', null, 'CarePlus Medical · Guardia las 24 horas · contacto@careplus.example'),
-    h('p', null, '© 2026 CarePlus Medical')));
+  const [photo, setPhoto] = useState(() => { try { return localStorage.getItem('tl-photo') || ''; } catch (e) { return ''; } });
+  const pick = e => {
+    const f = e.target.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { setPhoto(r.result); try { localStorage.setItem('tl-photo', r.result); } catch (e) {} };
+    r.readAsDataURL(f);
+  };
+  return h('footer', {id:'contacto'}, h('div', {className:'wrap creator'},
+    h('label', {className:'photo', title:'Tocá para poner tu foto'},
+      photo ? h('img', {src:photo, alt:'Tatiana Lopez'}) : h('span', null, 'Tu foto'),
+      h('input', {type:'file', accept:'image/*', onChange:pick, hidden:true})),
+    h('p', {className:'who'}, 'Creadora', h('br'), h('strong', null, 'Tatiana Lopez'))));
 }
 
 function App() {
-  return h(React.Fragment, null, h(Nav), h('main', null, h(Hero), h(Departments), h(Services)), h(Footer));
+  const [date, setDate] = useState('');
+  return h(React.Fragment, null, h(Nav), h('main', null, h(Hero, {date, setDate}), h(Departments), h(Calendar, {date, setDate}), h(Services)), h(Footer));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(h(App));
 </script>
